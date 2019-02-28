@@ -16,7 +16,7 @@ class Parser:
                 picture_data = line.split()
                 is_vertical = True if picture_data[0] == 'V' else False
                 photo_tags = picture_data[2:]
-                cur_photo = Photo(photo_index, photo_tags, is_vertical)
+                cur_photo = Photo(photo_index, set(photo_tags), is_vertical)
                 photos.append(cur_photo)
                 photo_index += 1
                 for tag in photo_tags:
@@ -26,7 +26,6 @@ class Parser:
                         tag_dictionary[tag] = [cur_photo]
 
                 if is_vertical:
-	                photo_tags = photo_tags[:]
 	                photo_tags.append('V')
 
                 for tag in photo_tags:
