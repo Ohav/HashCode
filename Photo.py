@@ -1,8 +1,9 @@
 class Photo:
-    def __init__(self, index, tags, v_or_h):
+    def __init__(self, index, tags, vertical, other_index=-1):
         self.tags = tags  # a set
         self.image_index = index
-        self.v_or_h = v_or_h
+        self.other_index = other_index
+        self.vertical = vertical
         self.is_taken = False
 
     def __contains__(self, a):
