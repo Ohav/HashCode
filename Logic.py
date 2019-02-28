@@ -9,6 +9,7 @@ class Logic:
         current = photos[index]
         if current.vertical:
             current = self.find_companion(current, photo_dict)
+            photo_count -= 1
 
         presentation = [current]
         current.take()
