@@ -18,3 +18,7 @@ class Photo:
         other_tags = other.tags - common_tags
         return min(len(common_tags), len(self_tags), len(other_tags))
 
+    def merge(self, other):
+        other.is_taken = True
+        self.tags = self.tags.union(other.tags)
+        self.other_index = other.image_index
