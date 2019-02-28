@@ -4,13 +4,19 @@ from Photo import *
 
 class Logic:
     def main(self, photo_dict, photos):
-        photo_count = len(photos)
+        photo_count = len(photos) - 1
         current = photos[0]
         presentation = [current]
+        current.is_taken = True
         while photo_count:
             next_p = self.get_next(photo_dict, current)
             if not next_p:
                 next_p = self.find_any_photo(photos)
+                if not next_p:
+                    if photo_count > 1:
+                        print("ODD")
+                        print(str(photo_count))
+                    break
 
             next_p.is_taken = True
             current = next_p
@@ -56,15 +62,18 @@ class Logic:
     def find_companion(self, candidate, photo_dict):
         max_common = -1
         max_photo = None
+        candidate.is_taken = True
         for photo in photo_dict['V']:
-            if not photo.is_taken:
-                common = len(candidate.tags & photo.tags)
-                if common > max_common:
-                    max_photo = photo
-                    max_common = common
+            if photo.is_taken:
+                continue
+            common = len(candidate.tags & photo.tags)
+            if common > max_common:
+                max_photo = photo
+                max_common = common
         if not max_photo:
             return None
         candidate.merge(max_photo)
+        candidate.is_taken = False
         return candidate
 
 

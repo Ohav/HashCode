@@ -1,6 +1,8 @@
 import re
 import sys
 import Logic
+import Writer
+import os
 from Photo import Photo
 
 
@@ -26,18 +28,29 @@ class Parser:
                         tag_dictionary[tag] = [cur_photo]
 
                 if is_vertical:
-	                photo_tags.append('V')
+                    photo_tags.append('V')
 
                 for tag in photo_tags:
-	                if tag in tag_dictionary:
-		                tag_dictionary[tag].append(cur_photo)
-	                else:
-		                tag_dictionary[tag] = [cur_photo]
+                    if tag in tag_dictionary:
+                        tag_dictionary[tag].append(cur_photo)
+                    else:
+                        tag_dictionary[tag] = [cur_photo]
 
         return photos, tag_dictionary
 
 
 if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        sys.exit("Usage: Parser <input>")
+    if not os.path.isfile(sys.argv[1]):
+        sys.exit("Invalid file given: " + sys.argv[1])
+
+    print("Start parsing.. ")
     photos, photo_dict = Parser.parse_file(sys.argv[1])
+    print("OK")
     CodeLogic = Logic.Logic()
-    CodeLogic.main(photo_dict, photos)
+    print("Started Logic")
+    presentation = CodeLogic.main(photo_dict, photos)
+    print("OK")
+    Writer.write_presentation(presentation, sys.argv[1] + '.sol')
+    print("Done")
