@@ -1,9 +1,6 @@
 import re
 from Photo import Photo
 
-INT = re.compile(r"^(int)\b")
-
-
 class Parser:
 
 	def parse_file(self, file_name):
@@ -24,5 +21,11 @@ class Parser:
 						tag_dictionary[tag].append(cur_picture)
 					else:
 						tag_dictionary[tag] = [cur_picture]
+
+				if is_vertical:
+					if 'V' in tag_dictionary:
+						tag_dictionary['V'].append(cur_picture)
+					else:
+						tag_dictionary['V'] = [cur_picture]
 
 		return pictures, tag_dictionary
