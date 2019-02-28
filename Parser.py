@@ -34,7 +34,7 @@ class Parser:
 	                else:
 		                tag_dictionary[tag] = [cur_photo]
 
-        return cur_photo, tag_dictionary
+        return photos, tag_dictionary
 
 
 if __name__ == '__main__':
