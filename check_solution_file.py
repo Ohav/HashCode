@@ -7,18 +7,17 @@
 # 4. there are rows with two numbers
 
 
-photos = {}
+photos = set()
 
-with open ("final_sol.txt", 'r') as file:
+with open ("final.sol", 'r') as file:
 	number = int(file.readline())
 	counter = 0
 	found_verticals = False
-	for line in file.readline():
+	for line in file.readlines():
 		cur_line = line.split()
 		line_len = len(cur_line)
-		if line_len> 2:
+		if line_len > 2:
 			print ("found line with {0} numbers (line number: {1})".format(line_len, counter))
-			break
 
 		if line_len == 2:
 			found_verticals = True
@@ -26,12 +25,9 @@ with open ("final_sol.txt", 'r') as file:
 		for photo in cur_line:
 			if photo in photos:
 				print("found duplicated picture {0}".format(photo))
-				break
 			else:
 				photos.add(photo)
-
 		counter += 1
 
 	if counter != number:
 		print("number of photos do not match {0} != {1}".format(number, counter))
-		break
