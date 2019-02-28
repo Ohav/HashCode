@@ -1,6 +1,6 @@
 class Photo:
     def __init__(self, index, tags, v_or_h):
-        self.tags = tags # a set
+        self.tags = tags  # a set
         self.image_index = index
         self.v_or_h = v_or_h
         self.is_taken = False
@@ -15,5 +15,5 @@ class Photo:
         common_tags = self.tags & other.tags
         self_tags = self.tags - common_tags
         other_tags = other.tags - common_tags
-        return min(common_tags, self_tags, other_tags)
+        return min(len(common_tags), len(self_tags), len(other_tags))
 
