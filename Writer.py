@@ -11,9 +11,9 @@ def write(slides, answer_file):
         file.write(str(len(slides)) + "\n")
 
         for i, slide in enumerate(slides):
-            file.write(slide.image_index)
+            file.write(str(slide.image_index))
             if slide.other_index != -1:
-                file.write(" " + slide.other_index)
+                file.write(" " + str(slide.other_index))
 
             # checks vertical 2 in slide and horizontal 1 in slide
             if slide.vertical and slide.other_index == -1:
