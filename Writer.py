@@ -7,7 +7,7 @@ def write(slides, answer_file):
     answer_file += str(now.hour) + ":" + str(now.minute) + ".sol"
 
     score = 0
-    with open(answer_file, "r") as file:
+    with open(answer_file, "w") as file:
         file.write(str(len(slides)) + "\n")
 
         for i, slide in enumerate(slides):
