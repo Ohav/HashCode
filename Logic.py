@@ -5,7 +5,11 @@ from Photo import *
 class Logic:
     def main(self, photo_dict, photos):
         photo_count = len(photos) - 1
-        current = photos[0]
+        index = 0
+        current = photos[index]
+        if current.vertical:
+            current = self.find_companion(current, photo_dict)
+
         presentation = [current]
         current.take()
         while photo_count:
