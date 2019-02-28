@@ -52,5 +52,5 @@ if __name__ == '__main__':
     print("Started Logic")
     presentation = CodeLogic.main(photo_dict, photos)
     print("OK")
-    Writer.write(presentation, sys.argv[1] + '.sol')
+    Writer.write(presentation, sys.argv[1])
     print("Done")

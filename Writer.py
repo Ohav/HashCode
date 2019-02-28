@@ -1,10 +1,10 @@
 import datetime
 
-
+import os
 def write(slides, answer_file):
-    answer_file = answer_file.split(".")[0]
+    answer_file = answer_file.split('.')[0]
     now = datetime.datetime.now()
-    answer_file += str(now.hour) + ":" + str(now.minute) + ".sol"
+    answer_file = answer_file + str(now.hour) + ":" + str(now.minute) + ".sol"
 
     score = 0
     with open(answer_file, "w") as file:
