@@ -8,7 +8,7 @@ class Logic:
         current = photos[0]
         presentation = [current]
         while photo_count:
-            next_p = self.get_next(photo_dict, photos, current)
+            next_p = self.get_next(photo_dict, current)
             if not next_p:
                 next_p = self.find_any_photo(photos)
 
@@ -32,6 +32,7 @@ class Logic:
                 if photo.vertical:
                     real_photo = self.find_companion(photo, photo_dict)  # Verticals are merged
                     if not real_photo:
+                        photo.is_taken = True  # But not really :(
                         continue
                 else:
                     real_photo = photo
@@ -55,7 +56,7 @@ class Logic:
     def find_companion(self, candidate, photo_dict):
         max_common = -1
         max_photo = None
-        for photo in photo_dict['vertical']:
+        for photo in photo_dict['V']:
             if not photo.is_taken:
                 common = len(candidate.tags & photo.tags)
                 if common > max_common:
