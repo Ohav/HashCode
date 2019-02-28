@@ -1,16 +1,16 @@
 import datetime
 
 import os
+
 def write(slides, answer_file):
-    answer_file = answer_file.split('.')[0]
-    now = datetime.datetime.now()
-    answer_file = answer_file + str(now.hour) + ":" + str(now.minute) + ".sol"
-
     score = 0
-    with open(answer_file, "w") as file:
+    answer_file += '.sol'
+    with open(answer_file, "w+") as file:
+        print ("Writing..")
         file.write(str(len(slides)) + "\n")
-
+        print("WR")
         for i, slide in enumerate(slides):
+            print(i)
             file.write(str(slide.image_index))
             if slide.other_index != -1:
                 file.write(" " + str(slide.other_index))
@@ -24,4 +24,4 @@ def write(slides, answer_file):
             file.write("\n")
             if i + 1 != len(slides):
                 score += slide.score(slides[i + 1])
-    print(score)
+    print("Score: " + str(score))
