@@ -2,6 +2,7 @@ import re
 import sys
 import Logic
 import Writer
+import os
 from Photo import Photo
 
 
@@ -39,6 +40,11 @@ class Parser:
 
 
 if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        sys.exit("Usage: Parser <input>")
+    if not os.path.isfile(sys.argv[1]):
+        sys.exit("Invalid file given: " + sys.argv[1])
+
     print("Start parsing.. ")
     photos, photo_dict = Parser.parse_file(sys.argv[1])
     print("OK")
@@ -46,5 +52,5 @@ if __name__ == '__main__':
     print("Started Logic")
     presentation = CodeLogic.main(photo_dict, photos)
     print("OK")
-    Writer.write_presentation(presentation, 'final.sol')
+    Writer.write_presentation(presentation, sys.argv[1] + '.sol')
     print("Done")

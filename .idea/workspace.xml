@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logic.py" beforeDir="false" afterPath="$PROJECT_DIR$/Logic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Writer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Writer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,11 +24,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Logic.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Logic.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Logic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="586">
-              <caret line="70" column="34" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+            <state relative-caret-position="374">
+              <caret line="25" column="40" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="40" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -37,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Parser.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Parser.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Parser.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="535">
-              <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
+              <caret line="54" column="63" selection-start-line="54" selection-start-column="63" selection-end-line="54" selection-end-column="63" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -75,9 +74,9 @@
       <list>
         <option value="$PROJECT_DIR$/Photo.py" />
         <option value="$PROJECT_DIR$/Reader.py" />
-        <option value="$PROJECT_DIR$/Parser.py" />
         <option value="$PROJECT_DIR$/Writer.py" />
         <option value="$PROJECT_DIR$/Logic.py" />
+        <option value="$PROJECT_DIR$/Parser.py" />
       </list>
     </option>
   </component>
@@ -193,12 +192,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Parser.py">
+    <entry file="file://$PROJECT_DIR$/Writer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
+        <state relative-caret-position="170">
+          <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Logic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="25" column="40" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="40" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -210,19 +216,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Writer.py">
+    <entry file="file://$PROJECT_DIR$/Parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Logic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="70" column="34" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+        <state relative-caret-position="535">
+          <caret line="54" column="63" selection-start-line="54" selection-start-column="63" selection-end-line="54" selection-end-column="63" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -12,6 +12,11 @@ class Logic:
             next_p = self.get_next(photo_dict, current)
             if not next_p:
                 next_p = self.find_any_photo(photos)
+                if not next_p:
+                    if photo_count > 1:
+                        print("ODD")
+                        print(str(photo_count))
+                    break
 
             next_p.is_taken = True
             current = next_p
