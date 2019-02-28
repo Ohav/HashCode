@@ -8,6 +8,9 @@ class Photo:
     def __contains__(self, a):
         return a in self.tags
 
+    def __len__(self):
+        return len(self.tags)
+
     def score(self, other):
         common_tags = self.tags & other.tags
         self_tags = self.tags - common_tags
