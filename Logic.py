@@ -14,6 +14,7 @@ class Logic:
         presentation = [current]
         current.take()
         while photo_count:
+            print(str(photo_count))
             next_p = self.get_next(photo_dict, current)
             if not next_p:
                 next_p = self.find_any_photo(photos)
@@ -27,6 +28,11 @@ class Logic:
             current = next_p
             if current.vertical:
                 photo_count -= 1
+                for i in range(2):
+                    for tag in current.sons[i].tags:
+                        photo_dict[tag].remove(current.sons[i])
+                    photo_dict['V'].remove(current.sons[i])
+                    photos.remove(current.sons[i])
             photo_count -= 1
             presentation.append(current)
 
@@ -35,28 +41,33 @@ class Logic:
     def get_next(self, photo_dict, start):
         max_photo = None
         max_score = -1
+        all_photos = set()
         for tag in start.tags:
             for photo in photo_dict[tag]:
-                # Preparing the photo
-                if photo.is_taken:
+                all_photos.add(photo)
+
+
+        for photo in all_photos:
+            # Preparing the photo
+            if photo.is_taken:
+                continue
+            if photo.vertical:
+                real_photo = self.find_companion(photo, photo_dict)  # Verticals are merged
+                if not real_photo:
+                    photo.take()  # But not really :(
                     continue
-                if photo.vertical:
-                    real_photo = self.find_companion(photo, photo_dict)  # Verticals are merged
-                    if not real_photo:
-                        photo.take()  # But not really :(
-                        continue
-                else:
-                    real_photo = photo
+            else:
+                real_photo = photo
 
-                # Calculating the score of the photo
-                score = start.score(real_photo)
-                if score == len(start) - 1 == len(real_photo) - 1:
-                    return real_photo
-                secondary_score = min(abs(len(start) - score), abs(len(real_photo) - score))
-                if max_score <= secondary_score:
-                    max_score = secondary_score
-                    max_photo = real_photo
-
+            # Calculating the score of the photo
+            score = start.score(real_photo)
+            if score == len(start) - 1 == len(real_photo) - 1:
+                return real_photo
+            secondary_score = min(abs(len(start) - score), abs(len(real_photo) - score))
+            if max_score <= secondary_score:
+                max_score = secondary_score
+                max_photo = real_photo
+                return max_photo
         return max_photo
 
     def find_any_photo(self, photos):
@@ -75,6 +86,8 @@ class Logic:
             if common > max_common:
                 max_photo = photo
                 max_common = common
+                if max_common > 0:
+                    break
         if not max_photo:
             return None
         new_photo = candidate.merge(max_photo)
