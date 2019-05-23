@@ -1,5 +1,6 @@
 import math
 from Photo import *
+from tqdm import tqdm
 
 
 class Logic:
@@ -13,28 +14,30 @@ class Logic:
 
         presentation = [current]
         current.take()
-        while photo_count:
-            print(str(photo_count))
-            next_p = self.get_next(photo_dict, current)
-            if not next_p:
-                next_p = self.find_any_photo(photos)
+        with tqdm(total=photo_count) as pbar:
+            while photo_count:
+                next_p = self.get_next(photo_dict, current)
                 if not next_p:
-                    if photo_count > 1:
-                        print("ODD")
-                        print(str(photo_count))
-                    break
+                    next_p = self.find_any_photo(photos)
+                    if not next_p:
+                        if photo_count > 1:
+                            print("ODD")
+                            print(str(photo_count))
+                        break
 
-            next_p.take()
-            current = next_p
-            if current.vertical:
+                next_p.take()
+                current = next_p
+                if current.vertical:
+                    photo_count -= 1
+                    pbar.update(1)
+                    for i in range(2):
+                        for tag in current.sons[i].tags:
+                            photo_dict[tag].remove(current.sons[i])
+                        photo_dict['V'].remove(current.sons[i])
+                        photos.remove(current.sons[i])
                 photo_count -= 1
-                for i in range(2):
-                    for tag in current.sons[i].tags:
-                        photo_dict[tag].remove(current.sons[i])
-                    photo_dict['V'].remove(current.sons[i])
-                    photos.remove(current.sons[i])
-            photo_count -= 1
-            presentation.append(current)
+                pbar.update(1)
+                presentation.append(current)
 
         return presentation
 
@@ -45,7 +48,6 @@ class Logic:
         for tag in start.tags:
             for photo in photo_dict[tag]:
                 all_photos.add(photo)
-
 
         for photo in all_photos:
             # Preparing the photo
